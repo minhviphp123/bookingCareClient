@@ -1,0 +1,28 @@
+{
+    "homeHeader": {
+        "speciality": "Chuyên khoa",
+        "searchDoctor": "Tìm bác sĩ theo chuyên khoa",
+        "healthFacility": "Cơ sở vật chất",
+        "selectRoom": "Chọn bệnh viện phòng khám",
+        "doctor": "Bác sĩ",
+        "selectDoctor": "Chọn bác sĩ",
+        "fee": "Gói khám",
+        "checkHealth": "Khám sức khỏe tổng quát",
+        "support": "Hỗ trợ"
+    },
+    "menu": {
+        "admin": {
+            "manage-user": "Người dùng",
+            "manage-doctor": "Quản lí bác sĩ",
+            "manage-admin": "Quản lí admin",
+            "crud": "CRUD user",
+            "crud-redux": "CRUD Redux",
+            "clinic": "Phòng khám",
+            "manage-clinic": "Quản lí phòng khám",
+            "specialty": "Chuyên khoa",
+            "manage-specialty": "Quản lí chuyên khoa",
+            "handbook": "Cẩm nang",
+            "manage-handbook": "Quản lí cẩm nang"
+        }
+    }
+}

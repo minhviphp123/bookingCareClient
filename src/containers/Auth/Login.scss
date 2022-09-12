@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-background {
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.login-container {
+    border: 2px red solid;
+    padding: 20px;
+    width: 27%;
+    height: 500px;
+    margin: 0 auto;
+}
+
+button {
+    margin: 10px 0;
+    width: 100%;
+}
+
+span{
+    font-size: 16px;
+}
+
+a{
+    text-decoration: none;
+    margin: 2px;
+}
+
+.co12{
+    display: flex;
+    justify-content: center;
+}
+
+.bu{
+    width: fit-content !important;
+    padding: 2px 25px;
+    margin: 10px auto !important;
+}

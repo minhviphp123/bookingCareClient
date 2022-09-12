@@ -1,0 +1,33 @@
+@import "../../styles/common.scss";
+
+.header-container {
+    z-index: 99;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $colormain;
+    color: $common-text-color;
+    height: 40px;
+    position: relative;
+
+    .greeting{
+        position: absolute;
+        right: 60px;
+    }
+
+    .btn-logout {
+        color: $common-text-color;
+        line-height: 30px;
+        height: fit-content;
+        padding: 0 10px;    
+        width: fit-content;
+        transform: translateX(-10px);
+
+        &:hover {
+            background-color: darken($colormain, 5);
+        }
+        i {
+            font-size: $base-size + 1px;
+        }
+    }
+}
