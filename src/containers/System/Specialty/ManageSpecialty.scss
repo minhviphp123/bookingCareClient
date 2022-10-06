@@ -1,0 +1,20 @@
+.ms-title{
+    text-align: center;
+    margin: 10px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.add-new-specialty{
+    margin-bottom: 20px !important;
+}
+
+.btn-save-specialty{
+    display: block;
+    margin: 20px auto !important;
+    width: 90px !important;
+    &:hover{
+        color: green;
+    }
+}

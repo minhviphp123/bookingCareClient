@@ -1,15 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../../../store/actions';
 import './MedicalFacility.scss';
-
+import { withRouter } from 'react-router';
 import Slider from 'react-slick';
 
 import img from '../../../assets/medFacility/114348-bv-viet-duc.jpg'
 
 class MedicalFacility extends Component {
 
-    render() {
+    constructor(props) {
+        super(props);
+        this.state = {
+            clinics: []
+        }
+    }
 
+    handleViewClinic = (id) => {
+        this.props.history.push(`/detailClinic/${id}`);
+    }
+
+    async componentDidMount() {
+        this.props.getAllClinic();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.clinics !== this.props.clinics) {
+            this.setState({
+                clinics: this.props.clinics
+            })
+        }
+    }
+
+    render() {
+        let clinics = this.state.clinics;
         return (
             <div className='specialtySection'>
                 <div className="specialtyContainer">
@@ -18,27 +42,14 @@ class MedicalFacility extends Component {
                         <button className='headerButton'>Xem thêm</button>
                     </div>
                     <Slider {...this.props.settings}>
-                        <div className='img'>
-                            <img src={img} alt="" className='ii' />
-                            <h3>Bệnh viện...</h3>
-                        </div>
-                        <div className='img'>
-                            <img src={img} alt="" className='ii' />
-                            <h3>Bệnh viện...</h3>
-                        </div>
-                        <div className='img'>
-                            <img src={img} alt="" className='ii' />
-                            <h3>Bệnh viện...</h3>
-                        </div><div className='img'>
-                            <img src={img} alt="" className='ii' />
-                            <h3>Bệnh viện...</h3>
-                        </div><div className='img'>
-                            <img src={img} alt="" className='ii' />
-                            <h3>Bệnh viện...</h3>
-                        </div><div className='img'>
-                            <img src={img} alt="" className='ii' />
-                            <h3>Bệnh viện...</h3>
-                        </div>
+                        {clinics && clinics.length > 0 &&
+                            clinics.map((item, index) =>
+                                <div className='img' key={index} onClick={() => this.handleViewClinic(item._id)}>
+                                    <img src={Buffer.from(item.img, 'base64').toString('binary')} alt="" className='ii' />
+                                    <h3>{item.name}</h3>
+                                </div>
+                            )}
+
                     </Slider>
                 </div>
             </div>
@@ -49,14 +60,14 @@ class MedicalFacility extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn,
-        lang: state.app.language
+        clinics: state.admin.clinics
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        getAllClinic: () => dispatch(actions.getAllClinic())
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MedicalFacility);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MedicalFacility));

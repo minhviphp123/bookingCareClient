@@ -55,7 +55,6 @@ class UserRedux extends Component {
 
     handleOnchangeImg = async (e) => {
         let base64 = await CommonUtils.getBase64(e.target.files[0]);
-        console.log(base64);
         this.setState({
             image: URL.createObjectURL(e.target.files[0]),
             avt: base64
@@ -131,7 +130,6 @@ class UserRedux extends Component {
 
     render() {
         let roleArr = this.state.roleArr;
-        let { name, password, role, img } = this.props;
         return (
 
             <div className='user-redux-container'>

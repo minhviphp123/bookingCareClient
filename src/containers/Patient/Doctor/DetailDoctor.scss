@@ -1,0 +1,90 @@
+.detailDoctorPage{
+    padding: 7px;
+
+    .doctorDetailDiv{
+        padding: 6px;
+        margin-top: 20px;
+        height: 1000px;
+        border: 2px solid rgb(54, 54, 160);
+    }
+}
+
+.intro{
+    width: 87%;
+    height: 23%;
+    margin: 25px auto;
+    display: flex;
+    align-items: center;
+}
+
+.avtt{
+    width: fit-content;
+    height: 90%;
+    border: 1px solid;
+    margin-right: 30px;
+}
+
+.text{
+    width: 62%;
+    height: 90%;
+    border: 1px solid;
+}
+
+.name{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.iii{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-position: center;
+}
+
+.schedule{
+    margin: 0 100px;
+    height: 280px;
+    display: flex;
+    border: 1px solid green;
+}
+
+.content-left{
+    width: 50%;
+    border: 1px solid green;
+    margin-right: 4px;
+}
+
+.content-right{
+    width: 50%;
+    border: 1px solid green;
+}
+
+.nameAndAddressCli {
+    border-bottom: 1px solid;
+    padding: 10px;
+    width: 94%;
+    margin: 0 auto;
+}
+
+.addrTitle{
+    font-weight: bold;
+}
+
+.cliName{
+    font-weight: bold;
+}
+
+.price{
+    padding: 10px;
+    width: 94%;
+    margin: 0 auto;
+}
+
+.PriceText{
+    font-weight: bolder;
+}
+
+.priceValue{
+    font-weight: 300;
+}

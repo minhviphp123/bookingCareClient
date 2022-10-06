@@ -1,0 +1,41 @@
+.doctorScheduleContainer{
+    width: 100%;
+}
+.allSchedule{
+    display: flex;
+    flex-direction: column;
+}
+
+.select{
+    margin: 20px 20px;
+    border-top:  1px;
+    border-right: 1px;
+    border-left: 1px;
+    outline: none;
+    width: 33%;
+    padding: 4px;
+}
+
+.viewSchedule{
+    display: flex;
+    width: 90%;
+    height: 150px;
+    border: 1px solid;
+}
+
+.scheduleItem{
+    text-align: center;
+    width: 100px !important;
+    height: 30px;
+    padding: 2px;
+    margin: 5px !important;
+    color: black;
+    background-color: rgb(201, 114, 0);
+    border-radius: 8%;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    &:hover{
+        background: rgb(139, 119, 119);
+    }
+}

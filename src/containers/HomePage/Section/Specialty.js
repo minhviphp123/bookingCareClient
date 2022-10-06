@@ -2,15 +2,39 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Specialty.scss';
+import * as actions from "../../../store/actions";
 import { FormattedMessage } from 'react-intl';
 import Slider from 'react-slick';
+import { withRouter } from 'react-router';
 
 import img from '../../../assets/specialty/120331-co-xuong-khop.jpg';
 
 class Specialty extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            specialty: []
+        }
+    }
+
+    handleViewSpecialtyDetail = (id) => {
+        this.props.history.push(`/detailSpecialty/${id}`);
+    }
+
+    async componentDidMount() {
+        this.props.getAllSpecialty();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.allSpecialty !== this.props.allSpecialty) {
+            this.setState({
+                specialty: this.props.allSpecialty
+            })
+        }
+    }
 
     render() {
-
+        let specialty = this.state.specialty;
         return (
             <div className='specialtySection'>
                 <div className="specialtyContainer">
@@ -19,27 +43,14 @@ class Specialty extends Component {
                         <button className='headerButton'>Xem thêm</button>
                     </div>
                     <Slider {...this.props.settings}>
-                        <div className='img'>
-                            <img src={img} alt="" className='ii' />
-                            <h3>Cơ xương khớp 1</h3>
-                        </div>
-                        <div className='img'>
-                            <img src={img} alt="" className='ii' />
-                            <h3>Cơ xương khớp 2</h3>
-                        </div>
-                        <div className='img'>
-                            <img src={img} alt="" className='ii' />
-                            <h3>Cơ xương khớp 3</h3>
-                        </div><div className='img'>
-                            <img src={img} alt="" className='ii' />
-                            <h3>Cơ xương khớp 4</h3>
-                        </div><div className='img'>
-                            <img src={img} alt="" className='ii' />
-                            <h3>Cơ xương khớp 5</h3>
-                        </div><div className='img'>
-                            <img src={img} alt="" className='ii' />
-                            <h3>Cơ xương khớp 6</h3>
-                        </div>
+                        {specialty && specialty.length > 0 &&
+                            specialty.map((item) =>
+                                <div className='img' onClick={() => this.handleViewSpecialtyDetail(item._id)}>
+                                    <img src={Buffer.from(item.imgBase64, 'base64').toString('binary')} alt="" className='ii' />
+                                    <h3>{item.name}</h3>
+                                </div>
+                            )
+                        }
                     </Slider>
                 </div>
             </div>
@@ -51,15 +62,14 @@ class Specialty extends Component {
 //redux
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn,
-        language: state.app.language
+        allSpecialty: state.admin.allSpecialty
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        // changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language))
+        getAllSpecialty: () => dispatch(actions.getAllSpecialty())
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Specialty);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Specialty));

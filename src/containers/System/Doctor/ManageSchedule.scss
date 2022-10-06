@@ -1,0 +1,28 @@
+// .manage-schedule-container{
+//     // border: 1px solid green;
+// }
+
+.m-s-title{
+    text-transform: uppercase;
+}
+
+.container{
+    margin-top: 17px;
+}
+
+.pick-hour-container{
+    height: 150px;
+    display: flex;
+}
+
+.timeItem{
+    margin: 10px 10px !important;
+    background-color: transparent;
+    border: 0.5px solid;
+    border-radius: 20%;
+    height: 43px;
+}
+
+.colorUp{
+    background: green;
+}

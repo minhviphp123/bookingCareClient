@@ -1,0 +1,32 @@
+.moreInfo{
+    display: flex;
+    justify-content: space-around;
+}
+
+.content-left{
+    display: flex;
+}
+
+select{
+    border: 1px solid green;
+    outline: seagreen solid 1px;
+    padding: 5px;
+    font-weight: bold;
+    margin: 0 7px;
+}
+
+.newDoctorInfo {
+    border: 1px solid;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.inputs{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.DoctorIpItem {
+    width: 30%;
+}

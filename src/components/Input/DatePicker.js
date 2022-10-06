@@ -45,21 +45,21 @@ class DatePicker extends Component {
         }
     }
 
-    handleBlur = (event) => {
-        const { onChange } = this.props;
-        const value = event.target.value;
+    // handleBlur = (event) => {
+    //     const { onChange } = this.props;
+    //     const value = event.target.value;
 
-        // Take the blur event and process the string value
-        event.preventDefault();
-        const valueMoment = moment(value, 'DD/MM/YYYY');
-        onChange([valueMoment.toDate(), valueMoment.toDate()]);
-    };
+    //     // Take the blur event and process the string value
+    //     // event.preventDefault();
+    //     const valueMoment = moment(value, 'DD/MM/YYYY');
+    //     onChange([valueMoment.toDate(), valueMoment.toDate()]);
+    // };
 
-    onOpen = () => {
-        if (this.flatpickrNode) {
-            this.flatpickrNode.blur();
-        }
-    }
+    // onOpen = () => {
+    //     if (this.flatpickrNode) {
+    //         this.flatpickrNode.blur();
+    //     }
+    // }
 
     close() {
         this.flatpickr.close();

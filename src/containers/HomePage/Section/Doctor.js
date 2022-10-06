@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import './Doctor.scss';
 import * as actions from "../../../store/actions";
 import Slider from 'react-slick';
@@ -13,6 +14,10 @@ class Doctor extends Component {
         this.state = {
             doctors: []
         }
+    }
+
+    handleViewDetailDoctor = (doctor) => {
+        this.props.history.push(`/detailDoctor/${doctor._id}`);
     }
 
     async componentDidMount() {
@@ -29,7 +34,6 @@ class Doctor extends Component {
 
     render() {
         let doctors = this.state.doctors;
-        console.log(doctors);
         return (
             <div className='specialtySection'>
                 <div className="specialtyContainer">
@@ -45,10 +49,10 @@ class Doctor extends Component {
                             </div>
                         </div> */}
                         {doctors && doctors.map((item) =>
-                            <div className='imgg' key={item.password}>
+                            <div className='imgg' key={item.password} onClick={() => this.handleViewDetailDoctor(item)}>
                                 <div className='subBlock'>
                                     <img src={Buffer.from(item.avt, 'base64').toString('binary')} alt="" className='iii' />
-                                    <h3>{item.name}</h3>
+                                    <h3>{item.role},{item.name}</h3>
                                 </div>
                             </div>
                         )}
@@ -75,4 +79,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Doctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Doctor));

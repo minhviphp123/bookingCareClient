@@ -1,0 +1,25 @@
+.containerr {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.ele {
+    width: 40%;
+    margin: 20px 0;
+    color: green;
+}
+
+.elee {
+    color: green;
+}
+
+.eleee {
+    width: 230px;
+}
+
+.btu {
+    width: fit-content !important;
+}

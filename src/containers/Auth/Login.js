@@ -71,6 +71,46 @@ class Login extends Component {
         }
     }
 
+    handleKeyDown = async (e) => {
+        if (e.key === 'Enter') {
+            //clear err
+            this.setState({
+                errMess: ''
+            })
+            try {
+                const data = await service.handleLogin(this.state.name, this.state.password);
+                //success
+                if (data.data.errCode === 0) {
+                    this.props.userLoginSuccess(data.data.user);
+                    // this.setState({
+                    //     errMess: data.data.message
+                    // })
+                } else if (data.data.errCode === 1) {
+                    this.setState({
+                        errMess: data.data.message
+                    })
+                }
+                else {
+                    this.setState({
+                        errMess: data.data.message
+                    })
+                }
+            } catch (err) {
+                // console.log(err);
+                // if (err.response) {
+                //     if (err.response.data) {
+                //         this.setState({
+                //             errMess: err.response.data.message
+                //         })
+                //     }
+                // }
+                this.setState({
+                    errMess: 'login plz'
+                })
+            }
+        }
+    }
+
     render() {
         return (
             <div className="login-background" >
@@ -94,6 +134,7 @@ class Login extends Component {
                                 onChange={(event) => {
                                     this.handleOnchangePassword(event)
                                 }}
+                                onKeyDown={this.handleKeyDown}
                             />
                         </div>
                         <div className='col-12' style={{ color: 'red' }}>
