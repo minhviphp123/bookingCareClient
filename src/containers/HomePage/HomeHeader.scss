@@ -1,4 +1,4 @@
-.homeHeaderContainer{
+.homeHeaderContainer {
     height: 70px;
     width: 100%;
     position: -webkit-sticky;
@@ -6,71 +6,80 @@
     top: 0;
     background: white;
     z-index: 10;
-    
-    .homeHeaderContent{
+
+    .homeHeaderContent {
         width: 100%;
         height: 100%;
         display: flex;
-    
-        .leftContent{
+
+        .leftContent {
             width: 25%;
             display: flex;
             align-items: center;
             padding: 10px;
 
-            .menu{
+            .menu {
                 width: fit-content;
                 height: fit-content;
                 padding: 6px;
                 background: rgb(200, 204, 195);
             }
-            .menu:hover{
+
+            .menu:hover {
                 cursor: pointer;
             }
 
-            .headerLogo{
+            .headerLogo {
                 background: url('../../assets/images/bookingcareLogo.svg') center center no-repeat;
                 height: 100%;
                 width: 100%;
             }
         }
 
-        .centerContent{
+        .centerContent {
             width: 50%;
             display: flex;
-            
-            .childContent{
+            justify-content: space-evenly;
+
+            .childContent {
                 text-align: center;
                 font-size: 15.5px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 margin: 0 10px;
-                .bottom{
+
+                &:hover {
+                    background-color: rgb(129, 189, 129);
+                    cursor: pointer;
+                }
+
+                .bottom {
                     font-size: 12px;
                 }
             }
         }
 
-        .rightContent{
-            width: 25%;
+        .rightContent {
+            width: fit-content;
             display: flex;
             align-items: center;
             padding-left: 140px;
 
-            .language{
+            .language {
                 margin: 0 20px;
                 cursor: pointer;
                 opacity: 0.1;
 
-                &.active{
+                &.active {
                     opacity: 1;
-                    span{
+
+                    span {
                         color: rgb(9, 9, 230);
                     }
                 }
 
-                &:hover{
+                &:hover {
                     opacity: 1;
                 }
             }
@@ -79,7 +88,7 @@
     }
 }
 
-.homeHeaderBanner{
+.homeHeaderBanner {
     background: url('https://thuthuattienich.com/wp-content/uploads/2013/12/hinh-nen-may-tinh-hd.jpg') center center no-repeat;
     height: 500px;
     background-repeat: no-repeat;
@@ -88,58 +97,141 @@
     display: flex;
     flex-direction: column;
     color: white;
+    position: relative;
 
-   .contentUp{
-    height: 50%;
-    padding-top: 16px;
+    .contentUp {
+        height: 50%;
+        padding-top: 16px;
 
-    .title1{
-        text-align: center;
-        font-size: 30px;
-        text-shadow: 1px 1px 1px #333;
-        margin: 15px 0px;
-        // color: rgb(36, 32, 32);
-    }
+        .title1 {
+            text-align: center;
+            font-size: 30px;
+            text-shadow: 1px 1px 1px #333;
+            margin: 15px 0px;
+            // color: rgb(36, 32, 32);
+        }
 
-    .title2{
-        // color: rgb(32, 28, 28);
-        text-align: center;
-        font-size: 30px;
-        text-shadow: 1px 1px 1px #333;
+        .title2 {
+            // color: rgb(32, 28, 28);
+            text-align: center;
+            font-size: 30px;
+            text-shadow: 1px 1px 1px #333;
 
-    }
+        }
 
-    .search{
-        text-align: center;
-        
-        .input{
-            background: rgb(236, 236, 34);
-            border: none;
-            border-radius: 18px;
-            outline: none;
-            padding: 10px 20px;
-            margin-top: 19px;
-            width: 400px;
+        .search {
+            text-align: center;
+            // position: relative;
+
+            .input {
+                background: rgb(236, 236, 34);
+                border: none;
+                border-radius: 18px;
+                outline: none;
+                padding: 10px 20px;
+                margin-top: 19px;
+                width: 400px;
+            }
         }
     }
-   }
 
-    .contentDown{
+    .contentDown {
         height: 50%;
-        .options{
+        bottom: 10px;
+
+        .options {
             display: flex;
             height: 100%;
             justify-content: space-evenly;
             align-items: flex-end;
-    
-            .optionChild{
+            width: fit-content;
+
+            .optionChild {
                 margin: 27px 20px;
                 background: transparent;
-                padding: 20px; 
+                padding: 20px;
                 height: fit-content;
-                width: fit-content;  
+                width: fit-content;
                 text-align: center;
             }
         }
     }
+}
+
+.linkList {
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    position: absolute;
+    top: 230px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    width: 400px;
+}
+
+.link:hover {
+    background: green;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+}
+
+.bt {
+    width: 70px !important;
+    height: 40px !important;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border: none;
+    color: white;
+    background-image: linear-gradient(45deg, #2f80ed 0%, #00aeef 100%);
+}
+
+.rightContent {
+    transform: translateX(-30px);
+    display: flex;
+    justify-content: space-evenly;
+    width: 33% !important;
+}
+
+.support {
+    width: 71px !important;
+    height: 40px !important;
+    display: flex;
+    align-items: center;
+}
+
+.loginn {
+    width: 26%;
+    display: flex !important;
+    // align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly !important;
+}
+
+.avt {
+    // height: 100%;
+    // width: 29% !important;
+    display: flex;
+    justify-content: center;
+    margin: 0 3px;
+    padding: 3px;
+    transform: translateX(-9px);
+}
+
+img {
+    height: 26.86px;
+    width: 26.86px;
+    border-radius: 50%;
+    background-position: center;
+}
+
+.name {
+    width: 40%;
+    font-size: 16px !important;
+    display: flex;
+    align-items: center;
 }

@@ -8,7 +8,8 @@
         "selectDoctor": "Chọn bác sĩ",
         "fee": "Gói khám",
         "checkHealth": "Khám sức khỏe tổng quát",
-        "support": "Hỗ trợ"
+        "support": "Hỗ trợ",
+        "login": "Đăng Nhập"
     },
     "menu": {
         "admin": {

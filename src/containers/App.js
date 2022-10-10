@@ -4,6 +4,9 @@ import { Route, Switch, useHistory } from 'react-router-dom';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import { history } from '../redux'
 import { ToastContainer } from 'react-toastify';
+import { Redirect } from 'react-router-dom';
+
+import * as actions from "../store/actions";
 
 
 import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
@@ -21,10 +24,23 @@ import CustomScrollbars from '../components/CustomScrollbars';
 import Doctor from '../routes/Doctor';
 import DetailSpecialty from './Patient/Specialty/DetailSpecialty';
 import DetailClinic from './Patient/Clinic/DetailClinic';
+import SpecialtyNav from './HeaderNav/SpecialtyNav';
+import DoctorNav from './HeaderNav/DoctorNav';
+import Facility from './HeaderNav/Facility';
+import PackageNav from './HeaderNav/Package';
+import RedirectHome from './System/RedirectHome';
 
 import ConfirmModal from '../components/ConfirmModal';
+import { times } from 'lodash';
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            userRole: null
+        }
+    }
 
     handlePersistorState = () => {
         const { persistor } = this.props;
@@ -42,9 +58,28 @@ class App extends Component {
 
     componentDidMount() {
         this.handlePersistorState();
+        if (this.props.userInfo) {
+            this.setState({
+                userInfo: this.props.userInfo
+            })
+        }
+        console.log(this.props.userInfo);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.userInfo !== this.props.userInfo && this.props.userInfo != null) {
+            try {
+                this.setState({
+                    userRole: this.props.userInfo.role
+                })
+            } catch (err) {
+                throw new Error(err);
+            }
+        }
     }
 
     render() {
+        let userRole = this.state.userRole;
         return (
             <Fragment>
                 <Router history={history}>
@@ -55,13 +90,24 @@ class App extends Component {
                                 <Switch>
                                     <Route path={path.HOME} exact component={(Home)} />
                                     <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
-                                    <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                    {<Route path={path.SYSTEM}
+                                        component={userRole !== 'User'
+                                            ? (userIsAuthenticated(System))
+                                            : RedirectHome}
+                                    />}
+
                                     <Route path={'/doctor/'} component={userIsAuthenticated(Doctor)} />
+
+                                    <Route path={'/home/specialty'} component={SpecialtyNav} />
+                                    <Route path={'/home/doctor'} component={DoctorNav} />
+                                    <Route path={'/home/facility'} component={Facility} />
+                                    <Route path={'/home/package'} component={PackageNav} />
 
                                     <Route path={path.HOMEPAGE} component={HomePage} />
                                     <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
                                     <Route path={path.DETAIL_SPECAILTY} component={DetailSpecialty} />
                                     <Route path={path.DETAIL_CLINIC} component={DetailClinic} />
+                                    <Route component={() => { return (<Redirect to={'/home'} />) }} />
                                 </Switch>
                             </CustomScrollbars>
                         </div>
@@ -96,12 +142,14 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
         started: state.app.started,
-        isLoggedIn: state.user.isLoggedIn
+        isLoggedIn: state.user.isLoggedIn,
+        userInfo: state.user.userInfo
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        processLogout: () => dispatch(actions.userLoginSuccess()),
     };
 };
 

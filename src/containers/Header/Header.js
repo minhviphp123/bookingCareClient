@@ -7,6 +7,8 @@ import { adminMenu, doctorMenu, userMenu } from './menuApp';
 import './Header.scss';
 import { __RouterContext } from 'react-router';
 import { USER_ROLE } from '../../utils/constant';
+import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
 
@@ -17,9 +19,14 @@ class Header extends Component {
         }
     }
 
+    goHome = () => {
+        if (this.props.history) {
+            this.props.history.push('/home');
+        }
+    }
+
     componentDidMount = () => {
         let userInfo = this.props.userInfo;
-        console.log(userInfo);
         let menu = [];
         if (userInfo) {
             let role = userInfo.role;
@@ -46,6 +53,7 @@ class Header extends Component {
             <div className="header-container">
                 {/* thanh navigator */}
                 <div className="header-tabs-container">
+                    <div className='homeLink' ><Link to={'/home'} style={{ color: "white" }}>Home</Link></div>
                     <Navigator menus={this.state.menuApp} />
                 </div>
                 <div className='greeting'>
@@ -76,4 +84,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
