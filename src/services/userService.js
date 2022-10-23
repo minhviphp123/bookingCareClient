@@ -104,6 +104,10 @@ function delPatientById(id) {
     return axios.delete(`http://localhost:4000/delPatient/${id}`);
 }
 
+function delScheduleByTime(doctorId, time) {
+    return axios.delete(`http://localhost:4000/delScheduleByTime/${doctorId}/${time}`);
+}
+
 export default {
     handleLogin, getAllUsers,
     createNewUser, deleteUser,
@@ -117,5 +121,6 @@ export default {
     getDoctorBySpecialty, getScheduleById,
     newClinic, getAllClinic,
     getClinicById, getPatientByDoctor,
-    sendEmailConfirm, delPatientById
+    sendEmailConfirm, delPatientById,
+    delScheduleByTime
 };

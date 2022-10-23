@@ -150,66 +150,129 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                     :
-                    <div className='homeHeaderContainer' onClick={this.hideLinks}>
-                        <div className='homeHeaderContent'>
-                            <div className="leftContent">
-                                <div className="headerLogo" onClick={this.returnHome}
-                                    style={{ cursor: "pointer" }}
-                                ></div>
+                    ((this.props.userInfo.role === 'User') ?
+                        <div className='homeHeaderContainer' onClick={this.hideLinks}>
+                            <div className='homeHeaderContent'>
+                                <div className="leftContent">
+                                    <div className="headerLogo" onClick={this.returnHome}
+                                        style={{ cursor: "pointer" }}
+                                    ></div>
+                                </div>
+                                <div className="centerContent">
+                                    <div className="childContent">
+                                        <div>
+                                            <Link to='/home/specialty' style={{ color: "black" }}><FormattedMessage id="homeHeader.speciality" /></Link>
+                                        </div>
+                                        <div className='bottom'>
+                                            <FormattedMessage id="homeHeader.searchDoctor" />
+                                        </div>
+                                    </div>
+                                    <div className="childContent">
+                                        <div>
+                                            <Link to='/home/facility' style={{ color: "black" }}><FormattedMessage id="homeHeader.healthFacility" /></Link>
+                                        </div>
+                                        <div className='bottom'><FormattedMessage id="homeHeader.selectRoom" />
+                                        </div>
+                                    </div>
+                                    <div className="childContent">
+                                        <div>
+                                            <Link to='/home/doctor' style={{ color: "black" }}><FormattedMessage id="homeHeader.doctor" /></Link>
+                                        </div>
+                                        <div className='bottom'><FormattedMessage id="homeHeader.selectDoctor" /></div>
+                                    </div>
+                                    <div className="childContent">
+                                        <div>
+                                            <Link to='/home/package' style={{ color: "black" }}><FormattedMessage id="homeHeader.fee" /></Link>
+                                        </div>
+                                        <div className='bottom'><FormattedMessage id="homeHeader.checkHealth" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="rightContent">
+                                    <div className='support'><FormattedMessage id="homeHeader.support" />
+                                    </div>
+                                    <div className='loginn'>
+                                        <div className='avt'>
+                                            <img src={Buffer.from(this.props.userInfo.avt, 'base64').toString('binary')} alt="" />
+                                        </div>
+                                        <div className='name'>
+                                            {this.props.userInfo.name}
+                                        </div>
+                                    </div>
+                                    <div className={language === languages.VI ? "language active" : "language"}>
+                                        <span onClick={() => this.changeLanguage(languages.VI)} className='span'>VN</span>
+                                    </div>
+                                    <div className={language === languages.EN ? "language active" : "language"}>
+                                        <span onClick={() => this.changeLanguage(languages.EN)} className='span'>EN</span>
+                                    </div>
+                                    <div className="btn btn-logout" onClick={this.handleLogOut} title='Log out'>
+                                        <i className="fas fa-sign-out-alt"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="centerContent">
-                                <div className="childContent">
-                                    <div>
-                                        <Link to='/home/specialty' style={{ color: "black" }}><FormattedMessage id="homeHeader.speciality" /></Link>
+                        </div> :
+                        (<div className='homeHeaderContainer' onClick={this.hideLinks}>
+                            <div className='homeHeaderContent'>
+                                <div className="leftContent">
+                                    <div className="headerLogo" onClick={this.returnHome}
+                                        style={{ cursor: "pointer" }}
+                                    ></div>
+                                </div>
+                                <div className="centerContent">
+                                    <div className="childContent">
+                                        <div>
+                                            <Link to='/home/specialty' style={{ color: "black" }}><FormattedMessage id="homeHeader.speciality" /></Link>
+                                        </div>
+                                        <div className='bottom'>
+                                            <FormattedMessage id="homeHeader.searchDoctor" />
+                                        </div>
                                     </div>
-                                    <div className='bottom'>
-                                        <FormattedMessage id="homeHeader.searchDoctor" />
+                                    <div className="childContent">
+                                        <div>
+                                            <Link to='/home/facility' style={{ color: "black" }}><FormattedMessage id="homeHeader.healthFacility" /></Link>
+                                        </div>
+                                        <div className='bottom'><FormattedMessage id="homeHeader.selectRoom" />
+                                        </div>
+                                    </div>
+                                    <div className="childContent">
+                                        <div>
+                                            <Link to='/home/doctor' style={{ color: "black" }}><FormattedMessage id="homeHeader.doctor" /></Link>
+                                        </div>
+                                        <div className='bottom'><FormattedMessage id="homeHeader.selectDoctor" /></div>
+                                    </div>
+                                    <div className="childContent">
+                                        <div>
+                                            <Link to='/home/package' style={{ color: "black" }}><FormattedMessage id="homeHeader.fee" /></Link>
+                                        </div>
+                                        <div className='bottom'><FormattedMessage id="homeHeader.checkHealth" />
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="childContent">
-                                    <div>
-                                        <Link to='/home/facility' style={{ color: "black" }}><FormattedMessage id="homeHeader.healthFacility" /></Link>
+                                <div className="rightContent">
+                                    <div className='support'><FormattedMessage id="homeHeader.support" />
                                     </div>
-                                    <div className='bottom'><FormattedMessage id="homeHeader.selectRoom" />
+                                    <div className='loginn'>
+                                        <div className='sysLink'><Link to={'/system'}>SYSTEM</Link></div>
+                                        <div className='avt'>
+                                            <img src={Buffer.from(this.props.userInfo.avt, 'base64').toString('binary')} alt="" />
+                                        </div>
+                                        <div className='name'>
+                                            {this.props.userInfo.name}
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="childContent">
-                                    <div>
-                                        <Link to='/home/doctor' style={{ color: "black" }}><FormattedMessage id="homeHeader.doctor" /></Link>
+                                    <div className={language === languages.VI ? "language active" : "language"}>
+                                        <span onClick={() => this.changeLanguage(languages.VI)} className='span'>VN</span>
                                     </div>
-                                    <div className='bottom'><FormattedMessage id="homeHeader.selectDoctor" /></div>
-                                </div>
-                                <div className="childContent">
-                                    <div>
-                                        <Link to='/home/package' style={{ color: "black" }}><FormattedMessage id="homeHeader.fee" /></Link>
+                                    <div className={language === languages.EN ? "language active" : "language"}>
+                                        <span onClick={() => this.changeLanguage(languages.EN)} className='span'>EN</span>
                                     </div>
-                                    <div className='bottom'><FormattedMessage id="homeHeader.checkHealth" />
+                                    <div className="btn btn-logout" onClick={this.handleLogOut} title='Log out'>
+                                        <i className="fas fa-sign-out-alt"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div className="rightContent">
-                                <div className='support'><FormattedMessage id="homeHeader.support" />
-                                </div>
-                                <div className='loginn'>
-                                    <div className='avt'>
-                                        <img src={Buffer.from(this.props.userInfo.avt, 'base64').toString('binary')} alt="" />
-                                    </div>
-                                    <div className='name'>
-                                        {this.props.userInfo.name}
-                                    </div>
-                                </div>
-                                <div className={language === languages.VI ? "language active" : "language"}>
-                                    <span onClick={() => this.changeLanguage(languages.VI)} className='span'>VN</span>
-                                </div>
-                                <div className={language === languages.EN ? "language active" : "language"}>
-                                    <span onClick={() => this.changeLanguage(languages.EN)} className='span'>EN</span>
-                                </div>
-                                <div className="btn btn-logout" onClick={this.handleLogOut} title='Log out'>
-                                    <i className="fas fa-sign-out-alt"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        </div>)
+                    )
                 }
 
                 {this.props.isShowBanner &&

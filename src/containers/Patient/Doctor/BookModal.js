@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './BookModal.scss';
 import * as actions from '../../../store/actions';
+import axios from 'axios';
 import {
     Button,
     Modal,
@@ -31,7 +32,7 @@ class BookModal extends Component {
             email: '',
             address: '',
             reason: '',
-            isOpenModal: true
+            isOpenModal: ''
         }
     }
 
@@ -45,6 +46,7 @@ class BookModal extends Component {
         this.setState({
             ...copyState
         })
+
     }
 
     checkValidateInput = () => {
@@ -60,13 +62,13 @@ class BookModal extends Component {
         return isValid;
     }
 
-    handleBook = () => {
+    handleBook = async () => {
         let isValid = this.checkValidateInput();
         if (isValid) {
             this.props.newBooking(this.state);
-            this.setState({
-                isOpenModal: false
-            })
+            await axios.delete(`http://localhost:4000/delScheduleByTime/${this.state.doctorId}/${this.state.timeSlot}`)
+            this.props.reFetchSchedule();
+            this.props.toggleFromParent();
         }
     }
 
@@ -74,8 +76,8 @@ class BookModal extends Component {
         this.setState({
             doctorId: this.props.avt.doctorId._id,
             timeSlot: this.props.dataFromParent.time,
-            date: this.props.dataFromParent.date
-            // isOpenModal:this.props.isOpen
+            date: this.props.dataFromParent.date,
+            isOpenModal: this.props.isOpen
         })
     }
 

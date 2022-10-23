@@ -5,6 +5,7 @@ import './ScheduleSpecialty.scss';
 import BookModal from '../Doctor/BookModal';
 import HomeHeader from '../../HomePage/HomeHeader';
 import { createLogger } from 'redux-logger';
+import axios from 'axios';
 
 class ScheduleSpecialty extends Component {
 
@@ -23,12 +24,17 @@ class ScheduleSpecialty extends Component {
             isOpenModal: true,
             pickedOne: data
         })
+        console.log(data);
     }
 
     toggleModal = () => {
         this.setState({
             isOpenModal: false
         })
+    }
+
+    reFetchSchedule = () => {
+        this.props.getScheduleById(this.props.doctorId);
     }
 
     async componentDidMount() {
@@ -44,7 +50,6 @@ class ScheduleSpecialty extends Component {
                 scheduleById: this.props.scheduleById
             })
         }
-
     }
 
     render() {
@@ -59,6 +64,7 @@ class ScheduleSpecialty extends Component {
                         toggleFromParent={this.toggleModal}
                         dataFromParent={this.state.pickedOne}
                         avt={this.state.dataFromParent}
+                        reFetchSchedule={this.reFetchSchedule}
                     />
                 }
                 <div>Lịch Khám</div>

@@ -25,7 +25,7 @@ class RemedyModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOpenModal: true,
+            isOpenModal: '',
             email: '',
             imgBase64: '',
             patientId: ''
@@ -75,6 +75,7 @@ class RemedyModal extends Component {
         setTimeout(() => {
             this.props.reFetchBookingDB()
         }, 210);
+        this.props.toggleFromParent();
     }
 
     componentDidMount = () => {
@@ -84,14 +85,23 @@ class RemedyModal extends Component {
                 patientId: this.props.dataModal.patientId
             })
         }
+        if (this.props.isOpen) {
+            this.setState({
+                isOpenModal: this.props.isOpen
+            })
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+
     }
 
     render() {
-        let { email } = this.state
+        let { email, isOpenModal } = this.state
 
         return (
             <div>
-                <Modal isOpen={this.state.isOpenModal} toggle={() => { this.toggle() }} size="md">
+                <Modal isOpen={isOpenModal} toggle={() => { this.toggle() }} size="md">
                     <ModalHeader toggle={this.toggle}>Send Invoice</ModalHeader>
                     <ModalBody>
                         <div className='row'>

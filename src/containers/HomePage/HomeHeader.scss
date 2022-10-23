@@ -163,7 +163,7 @@
     flex-direction: column;
     z-index: 1000;
     position: absolute;
-    top: 230px;
+    top: 210px;
     left: 50%;
     transform: translateX(-50%);
     background: white;
@@ -194,7 +194,7 @@
     transform: translateX(-30px);
     display: flex;
     justify-content: space-evenly;
-    width: 33% !important;
+    width: 40% !important;
 }
 
 .support {
@@ -210,6 +210,7 @@
     // align-items: center;
     flex-direction: row;
     justify-content: space-evenly !important;
+    align-items: center;
 }
 
 .avt {
@@ -234,4 +235,8 @@ img {
     font-size: 16px !important;
     display: flex;
     align-items: center;
+}
+
+.sysLink {
+    margin: 0 10px;
 }
